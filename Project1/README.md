@@ -36,7 +36,7 @@ The following are the sequence of steps to pull and run the docker container of 
         $ docker logs my_app
         
    logs content when ready:
-   ![SS](https://github.uc.edu/rayabavj/CloudComputingProject01/blob/master/SS1.PNG)
+   ![SS](https://github.com/VarunRaj7/CloudComputing/blob/master/HW3/DynamicServiceAPI/SS1.PNG)
    
 7. When the image is successfully running, as seen in the logs, you can access the API through the browser.
 
@@ -64,7 +64,7 @@ The next statements in the docker file is just copying the required files like s
 This weather service api can be used to get the maximum and minimum temperature for a period of seven days given the starting date. Moreover, it compares the results from the Weather Underground data for the same data and same days.
 
 The api is also provided with the attractive user interface as shown below:
-![SS3](https://github.uc.edu/rayabavj/CloudComputing/blob/master/HW03/DynamicServiceAPI/SS3.PNG)
+![SS3](https://github.com/VarunRaj7/CloudComputing/blob/master/HW3/DynamicServiceAPI/SS3.PNG)
 
 For more deatails about API click the following link below: 
 

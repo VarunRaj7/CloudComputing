@@ -1,0 +1,8 @@
+FROM tiangolo/uwsgi-nginx-flask:latest
+COPY daily.csv /app
+COPY static /app/static
+COPY templates /app/templates
+COPY uwsgi.ini /app
+COPY webtool.py /app
+RUN /bin/bash -c "pip install flask-restful"
+RUN /bin/bash -c "pip install numpy"

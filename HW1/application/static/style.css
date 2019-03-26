@@ -1,0 +1,16 @@
+body{
+        color:solid black;
+        text-align:center;
+}
+a:link{
+        color: white;
+}
+a:hover{
+        color:yellow;
+}
+article{
+    margin-left: 250px;
+    margin-right:250px;
+    padding: 1em;
+    overflow: hidden;
+}

@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weather Web Application </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel ="stylesheet" href="\static\style.css">
+  <link href="{{url_for('static',filename='datepicker.min.css')}}" rel="stylesheet" type="text/css">
+  <script src="{{url_for('static',filename='datepicker.min.js')}}"></script>
+  <script src="{{url_for('static',filename='datepicker.en.js')}}"></script>
+  <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+  <script>
+	$(document).ready(function(){
+		let $btn = $('#button2'),
+			$input = $('#dp'),
+			dp = $input.datepicker({minDate:new Date(2013,0,01),maxDate:new Date(),showEvent: 'none',autoClose:'true'}).data('datepicker');
+			$btn.on('click', function(){
+			dp.show();
+			$input.focus();
+			});
+	$("#button1").click(function(){
+        $("#chartContainer").empty();
+			var x,datestring=[],datax=[];
+			var year=[],month=[],day=[],tmax=[],tmin=[];
+			var x=$("input:text").val(),r;
+			r=x.substring(6,10)+x.substring(0,2)+x.substring(3,5);
+            $.getJSON("/forecast/"+r, function(result){
+                $.each(result,function(){
+					$.each(this,function(key, value){
+                        switch (key){
+                            case "DATE":
+                                datestring.push(value);
+                                break;
+                                case "TMAX":
+                                tmax.push(value);
+                                break;
+                                case "TMIN":
+                                tmin.push(value);
+                                break;
+                                }
+                            });
+                        });
+                for (i=0;i<datestring.length;i++){
+                year.push(datestring[i].substring(0,4));
+                month.push(datestring[i].substring(4,6));
+                day.push(datestring[i].substring(6,8));
+                datax.push(new Date(year[i],month[i]-1,day[i]));
+                }
+
+		var utmin=[],utmax=[];
+		$.getJSON("/wuforecast/"+r, function(result){
+			for (i=0;i<7;i++){
+				utmax.push(result["wutmax"][i])	
+				utmin.push(result["wutmin"][i])
+			}
+        var options = {
+        animationEnabled: true,
+        theme: "light2",
+        title:{
+                text: "Weather Forecast"
+        },
+        axisX:{
+                valueFormatString: "DD MMM YYYY"
+        },
+        axisY: {
+                title: "Temperature",
+                suffix: "\xB0",
+                minimum: -10
+        },
+        toolTip:{
+                shared:true
+        },
+        legend:{
+                cursor:"pointer",
+                verticalAlign: "bottom",
+                horizontalAlign: "left",
+                dockInsidePlotArea: true,
+                itemclick: toogleDataSeries
+        },
+        data: [{
+                type: "line",
+                showInLegend: true,
+                name: "Max Temperature Forecast",
+                markerType: "square",
+                xValueFormatString: "DD MMM, YYYY",
+                color: "Red",
+                yValueFormatString: "###.###"+"\xB0"+"F",
+                dataPoints: [
+                        { x: datax[0], y: tmax[0] },
+                        { x: datax[1], y: tmax[1] },
+                        { x: datax[2], y: tmax[2] },
+                        { x: datax[3], y: tmax[3] },
+                        { x: datax[4], y: tmax[4] },
+                        { x: datax[5], y: tmax[5] },
+                        { x: datax[6], y: tmax[6] }
+                ]
+        },
+        {
+				type:"line",
+                showInLegend: true,
+                name: "Min Temperature Forecast",
+                lineDashType: "dash",
+				markerType: "circle",
+				color: "Green",
+                yValueFormatString: "###.###"+"\xB0"+"F",
+                dataPoints: [
+                        { x: datax[0], y: tmin[0] },
+                        { x: datax[1], y: tmin[1] },
+                        { x: datax[2], y: tmin[2] },
+                        { x: datax[3], y: tmin[3] },
+                        { x: datax[4], y: tmin[4] },
+                        { x: datax[5], y: tmin[5] },
+                        { x: datax[6], y: tmin[6] }
+                ]
+        },
+		{
+                type: "line",
+                showInLegend: true,
+                name: "Weather Underground Max Temperature Forecast",
+                markerType: "triangle",
+                xValueFormatString: "DD MMM, YYYY",
+                color: "#FF7070",
+				lineDashType: "shortDash",
+                yValueFormatString: "###.###"+"\xB0"+"F",
+                dataPoints: [
+                        { x: datax[0], y: utmax[0] },
+                        { x: datax[1], y: utmax[1] },
+                        { x: datax[2], y: utmax[2] },
+                        { x: datax[3], y: utmax[3] },
+                        { x: datax[4], y: utmax[4] },
+                        { x: datax[5], y: utmax[5] },
+                        { x: datax[6], y: utmax[6] }
+                ]
+        },
+		{
+                type: "line",
+                showInLegend: true,
+                name: "Weather Underground Min Temperature Forecast",
+                markerType: "cross",
+                lineDashType: "dotDash",
+				xValueFormatString: "DD MMM, YYYY",
+                color: "#AAFF00",
+                yValueFormatString: "###.###"+"\xB0"+"F",
+                dataPoints: [
+                        { x: datax[0], y: utmin[0] },
+                        { x: datax[1], y: utmin[1] },
+                        { x: datax[2], y: utmin[2] },
+                        { x: datax[3], y: utmin[3] },
+                        { x: datax[4], y: utmin[4] },
+                        { x: datax[5], y: utmin[5] },
+                        { x: datax[6], y: utmin[6] }
+                ]
+        }]
+  };
+
+
+  $("#chartContainer").CanvasJSChart(options);
+  });
+  });
+  });
+
+  function toogleDataSeries(e){
+        if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+        } else{
+                e.dataSeries.visible = true;
+        }
+        e.chart.render();
+  }
+});
+  </script>
+</head>
+<body>
+<h1 id="heading">Weather Forecast WebApp</h1>
+<p id="text">To know weather forecast for the next sevendays, give the starting date below:</p> 
+<div id="input-wrap">
+<input type="text" id="dp" data-position="bottom left" data-language="en" data-toggleSelected="true">
+<input id="button2" type="image" src="{{url_for('static',filename='Calender1.png')}}" alt="Calender" width="30" height="25"><br>
+<button id="button1">Submit</button>
+</div>
+<div id="chartContainer"></div>
+<div id="text2"><p>Courtesy:</p>
+<img src="{{url_for('static',filename='wu.jpg')}}"></div>
+
+</body>
+</html>

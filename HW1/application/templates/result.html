@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <link rel ="stylesheet" href="\static\style.css">
+    </head>
+
+    <body>
+       <h1>Welcome to my WebApp to find Left-Truncatable and Right-Truncatable Prime Numbers</h1>
+        <p>Along with the first single-digit prime numbers: 2, 3, 5 and 7, the following are both left-truncatable and right-truncatable prime numbers within {{x}}:</p>
+
+                {% for i in res%}
+                <p>{{i}}</p>
+                {% endfor %}
+        </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <link rel ="stylesheet" href="\static\style.css">
+    </head>
+
+    <body>
+       <h1>Welcome to my WebApp to find both Left-Truncatable and Right-Truncatable Prime Numbers</h1>
+        <article>
+        <h2>What is a Trunctable prime number?</h2>
+         <p> The number 3797 is both left-truncatable and right-truncatable prime number. Being prime itself, it is possible to continously remove digits from left to right, and remain prime at each stage: 3797, 379, 37,3.Hence, left-truncatable prime number. Similarly we can work from right to left: 3797, 797, 97 and 7, and call it as a right-truncatable number too.</p>
+        </article>
+        <h2>Curious to know more numbers!! Give the upper limit in the box below:</h2>
+       <form action = "/result" method="POST">
+           <input type="number" name="x" min="50" max="1000000"><br>
+           <input type="submit" value="Submit">
+       </form>
+       <footer>Source: <a href="https://projecteuler.net/problem=37">Project Euler</a></footer>
+    </body>
+  <html>
+

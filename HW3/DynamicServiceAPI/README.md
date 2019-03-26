@@ -10,16 +10,16 @@ This weather service api can be used to get the maximum and minimum temperature 
 http://18.188.80.28/
 
 The api is also provided with the attractive user interface as shown below:
-![SS1](https://github.uc.edu/rayabavj/CloudComputing/blob/master/HW03/DynamicServiceAPI/SS1.PNG)
+![SS1](https://github.com/VarunRaj7/CloudComputing/blob/master/HW3/DynamicServiceAPI/SS1.PNG)
 
 Upon clicking the calender icon beside the input form, a datepicker will pop up as shown below:
-![SS2](https://github.uc.edu/rayabavj/CloudComputing/blob/master/HW03/DynamicServiceAPI/SS2.PNG)
+![SS2](https://github.com/VarunRaj7/CloudComputing/blob/master/HW3/DynamicServiceAPI/SS2.PNG)
 
 Select the date and hit submit button below the input form. A sample result is shown below:
-![SS3](https://github.uc.edu/rayabavj/CloudComputing/blob/master/HW03/DynamicServiceAPI/SS3.PNG)
+![SS3](https://github.com/VarunRaj7/CloudComputing/blob/master/HW3/DynamicServiceAPI/SS3.PNG)
 
 You can also hover over the result to experience the pop-up animation as shown below:
-![SS4](https://github.uc.edu/rayabavj/CloudComputing/blob/master/HW03/DynamicServiceAPI/SS4.PNG)
+![SS4](https://github.com/VarunRaj7/CloudComputing/blob/master/HW3/DynamicServiceAPI/SS4.PNGG)
 
 ### CAUTION: DO NOT MAKE MORE THAN 1 REQUEST PER MINUTE, OTHERWISE THE WEATHER UNDERGROUND KEYID WILL BE DISABLED 
 

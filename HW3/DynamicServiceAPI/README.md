@@ -79,7 +79,7 @@ All the resources are same as in HW2 (https://github.uc.edu/rayabavj/CloudComput
     WUTMIN | Array of Number
     
     Example response for this resource:
-    ![SS5](https://github.uc.edu/rayabavj/CloudComputing/blob/master/HW03/DynamicServiceAPI/SS6.PNG)
+    ![SS5](https://github.com/VarunRaj7/CloudComputing/blob/master/HW3/DynamicServiceAPI/SS5.PNG)
 
 ### 4. References:
 

@@ -48,7 +48,7 @@ The following are the sequence of steps to pull and run the docker container of 
     
 ### 2. How Docker Instance is built?
 
-This docker instance is built using the file Dockerfile in link: https://github.uc.edu/rayabavj/CloudComputingProject01/blob/master/dockerfile . 
+This docker instance is built using the file Dockerfile in link: https://github.com/VarunRaj7/CloudComputing/blob/master/Project1/dockerfile . 
 
 Furthermore, this docker image is based on the docker image tiangolo/uwsgi-nginx-flask:latest. This instance served as the basis upon which the docker inastance is built as seen in the first statement in the dockerfile:
 
@@ -68,4 +68,4 @@ The api is also provided with the attractive user interface as shown below:
 
 For more deatails about API click the following link below: 
 
-https://github.uc.edu/rayabavj/CloudComputing/blob/master/HW03/DynamicServiceAPI/README.md
+https://github.com/VarunRaj7/CloudComputing/tree/master/HW3/DynamicServiceAPI
